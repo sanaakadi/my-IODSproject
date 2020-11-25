@@ -280,3 +280,100 @@ human_ <- human[1:last, ]
 rownames(human) <- human$Country
 ``{r}
 ```
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+# continue to be amazed
+
+*I did finally realized that the editing and commiting was in the github not in RStudio, I was desperate even though I was trying to understand, I hope this will begin to be simple now.*
+
+- I installed R, then RStudio and finally Git, I created an account and tried to update my profile. 
+- I learned how to execute some data camp stuff.
+- I could say that this project is designated to people who would like to share their project to public so that others can use them also or for team work so that they can share and edit together a specific project.
+
+```{r}
+date()
+```
+
+Let's learn more this week...
+# human with modified GNI and dplyr are available
+
+# columns to keep
+keep <- c("Country", "Edu2.FM", "Labo.FM", "Life.Exp", "Edu.Exp", "GNI", "Mat.Mor", "Ado.Birth", "Parli.F")
+
+# select the 'keep' columns
+human <- select(human, one_of(keep))
+
+# print out a completeness indicator of the 'human' data
+complete.cases(human)
+
+# print out the data along with a completeness indicator as the last column
+data.frame(human[-1], comp = complete.cases(human))
+
+# filter out all rows with NA values
+human_ <- filter(human, complete.cases(human))
+```{r}
+```
+
+
+`# human without NA is available
+
+# look at the last 10 observations
+tail(human, 10)
+
+# last indice we want to keep
+last <- nrow(human) - 7
+
+# choose everything until the last 7 observations
+human_ <- human[1:last, ]
+
+# add countries as rownames
+rownames(human) <- human$Country
+``{r}
+```
+
+# modified human, dplyr and the corrplot functions are available
+
+# remove the Country variable
+human_ <- select(human, -Country)
+
+# Access GGally
+library(GGally)
+
+# visualize the 'human_' variables
+ggpairs(human_)
+
+# compute the correlation matrix and visualize it with corrplot
+cor# tidyr package and human are available
+# access the stringr package
+library(stringr)
+# look at the structure of the GNI column in 'human'
+# remove the commas from GNI and print out a numeric version of it
+str_replace(human$GNI, pattern=",", replace ="")
+  [1] "64992"  "42261"  "56431"  "44025"  "45435"  "43919"  "39568"  "52947" 
+  [9] "42155"  "32689"  "76628"  "53959"  "79851"  "45636"  "39267"  "35182" 
+ [17] "33890"  "30676"  "58711"  "36927"  "41187"  "38056"  "43869"  "38695" 
+ [25] "27852"  "32045"  "33030"  "26660"  "24524"  "25214"  "72570"  "28633" 
+ [33] "123124" "43978"  "25845"  "23177"  "24500"  "27930"  "52821"  "22050" 
+ [41] "60868"  "21290"  "25757"  "22916"  "38599"  "22281"  "19409"  "83961" 
+ [49] "14558"  "16676"  "22352"  "34858"  "18108"  "19283"  "21336"  "20867" 
+ [57] "12488"  "20070"  "15596"  "13496"  "18192"  "22762"  "17470"  "23300" 
+ [65] "26090"  "12190"  "7301"   "16509"  "13413"  "15440"  "16159"  "18677" 
+ [73] "9779"   "16056"  "15175"  "7164"   "20805"  "16428"  "10939"  "11365" 
+ [81] "11780"  "8178"   "13054"  "11015"  "9943"   "8124"   "9638"   "10605" 
+ [89] "9765"   "12547"  "7493"   "10729"  "13323"  "9994"   "14911"  "10404" 
+ [97] "12040"  "9937"   "7415"   "5069"   "7614"   "11883"  "15617"  "12328" 
+[105] "5327"   "16646"  "5223"   "10512"  "13066"  "16367"  "9788"   "7643"  
+[113] "4699"   "5567"   "7915"   "7349"   "12122"  "5092"   "5760"   "3044"  
+[121] "14003"  "6094"   "3432"   "6522"   "4457"   "6850"   "9418"   "6929"  
+[129] "2517"   "5497"   "3938"   "7176"   "5363"   "2728"   "2803"   "6012"  
+[137] "2434"   "21056"  "3734"   "3852"   "4680"   "3191"   "2949"   "2918"  
+[145] "2762"   "2311"   "4866"   "4608"   "6822"   "5542"   "2411"   "5341"  
+[153] "2803"   "1328"   "1615"   "3560"   "1540"   "2463"   "1456"   "3519"  
+[161] "3306"   "1228"   "1669"   "1458"   "1613"   "1767"   "3809"   "3276"  
+[169] "2332"   "2188"   "1885"   "3171"   "747"    "1428"   "1507"   "680"   
+[177] "805"    "1362"   "1583"   "1123"   "1780"   "1096"   "1591"   "758"   
+[185] "2085"   "1130"   "581"    "908"    "15722"  "11449"  "12791"  "14242" 
+[193] "5605"   "3363"   "14301" (human_) %>% corrplot
